@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: C# doc paramter
+# key: docp
+# --
+<param name="$0"> <c>$0</c> $1 <param>

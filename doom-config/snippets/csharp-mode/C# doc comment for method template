@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: C# doc comment for method template
+# key: docm
+# --
+/// <summary>
+/// $0
+/// </summary>
+/// <returns> $1 </returns>
