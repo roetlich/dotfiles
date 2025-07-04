@@ -112,46 +112,46 @@
 ;;         company-minimum-prefix-length 3))                                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(with-eval-after-load 'tramp
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-  )
+;;(with-eval-after-load 'tramp
+;;  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+;;  )
 
 
 ;; define that the company completion is done with tab. Enter should just be used to insert a new line.
-(use-package! company
-  :hook (prog-mode . company-mode)
-  :bind (:map company-active-map
-              ("TAB" . 'company-complete-selection)
-              ("<tab>" . 'company-complete-selection)
-              ("RET" . nil)
-              ("<return>" . nil)))
+;; (use-package! company
+;;   :hook (prog-mode . company-mode)
+;;   :bind (:map company-active-map
+;;               ("TAB" . 'company-complete-selection)
+;;               ("<tab>" . 'company-complete-selection)
+;;               ("RET" . nil)
+;;               ("<return>" . nil)))
 
-;; in prog mode, tab should perform company-indent-or-complete-common, but this should effect other modes, such as helm.
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (define-key global-map (kbd "M-TAB") #'company-search-mode)
-            (define-key global-map (kbd "M-<tab>") #'company-search-mode)
-            )
-          )
+;; ;; in prog mode, tab should perform company-indent-or-complete-common, but this should effect other modes, such as helm.
+;; (add-hook 'prog-mode-hook
+;;           (lambda ()
+;;             (define-key global-map (kbd "M-TAB") #'company-search-mode)
+;;             (define-key global-map (kbd "M-<tab>") #'company-search-mode)
+;;             )
+;;           )
 
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "<return>") nil)
-  (define-key company-active-map (kbd "RET") nil)
-  (define-key company-active-map (kbd "TAB") #'company-complete-selection)
-  (define-key company-active-map (kbd "<tab>") #'company-complete-selection)
-  (setq company-idle-delay nil)
-  )
+;; (with-eval-after-load 'company
+;;   (define-key company-active-map (kbd "<return>") nil)
+;;   (define-key company-active-map (kbd "RET") nil)
+;;   (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+;;   (define-key company-active-map (kbd "<tab>") #'company-complete-selection)
+;;   (setq company-idle-delay nil)
+;;   )
 
-;; accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)
-              )
-  )
+;; ;; accept completion from copilot and fallback to company
+;; (use-package! copilot
+;;   :hook (prog-mode . copilot-mode)
+;;   :bind (:map copilot-completion-map
+;;               ("<tab>" . 'copilot-accept-completion)
+;;               ("TAB" . 'copilot-accept-completion)
+;;               ("C-TAB" . 'copilot-accept-completion-by-word)
+;;               ("C-<tab>" . 'copilot-accept-completion-by-word)
+;;               )
+;;   )
 
 ;; Custom Packages
 
@@ -166,8 +166,8 @@
 
 ;; haskell
 
-(after! lsp-haskell
-  (setq lsp-haskell-formatting-provider "brittany"))
+;;(after! lsp-haskell
+;;  (setq lsp-haskell-formatting-provider "brittany"))
 
 
 (setq shell-file-name "/bin/bash")
@@ -178,12 +178,4 @@
 ;; ssh path link for tramp:
 
 
-(defun +doom-dashboard--insert-links ()
-  "Insert the list of links."
-  (insert "\n")
-  (insert (propertize "  Links\n" 'face 'doom-dashboard-menu-title))
-  (let ((links
-         (cl-loop for path in (list "~/.doom.d/config.el" "/ssh:netem@"))
-         ))
-    (insert (mapconcat (lambda (link) (concat "  " link "\n")) links ""))
-    (insert "\n")))
+(setq next-line-add-newlines nil)

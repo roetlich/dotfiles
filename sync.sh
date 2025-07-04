@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
 SCRIPT_DIR=$(dirname "$0")
 
